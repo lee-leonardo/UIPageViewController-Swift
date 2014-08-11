@@ -20,7 +20,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
 		
 	}
 	
-//MARK: pageViewController
+//MARK: UIPageViewControllerDataSource
 	func pageViewController(pageViewController: UIPageViewController!, viewControllerBeforeViewController viewController: UIViewController!) -> UIViewController! {
 		
 		var currentVC = viewController as PageContentViewController
@@ -48,19 +48,6 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
 		return viewControllerAtIndex(index!)
 	}
 	
-	func viewControllerAtIndex( index: Int) -> PageContentViewController! {
-		if self.pageTitles.count == 0 || index >= self.pageTitles.count {
-			return nil
-		}
-		
-		var pageContentViewController = self.storyboard.instantiateViewControllerWithIdentifier("PageContentViewController") as PageContentViewController
-		pageContentViewController.titleText = self.pageTitles[index]
-		pageContentViewController.imagePath = self.pageImagePaths[index]
-		pageContentViewController.pageIndex = index
-		
-		return pageContentViewController
-	}
-	
 	func presentationCountForPageViewController(pageViewController: UIPageViewController!) -> Int {
 		return self.pageTitles.count
 	}
@@ -69,14 +56,43 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
 		return 0
 	}
 	
+	//Used to generate the ViewControllers at the Index.
+	func viewControllerAtIndex( index: Int) -> PageContentViewController! {
+		if self.pageTitles.count == 0 || index >= self.pageTitles.count {
+			return nil
+		}
+		
+		var pageContentViewController = self.storyboard.instantiateViewControllerWithIdentifier("PageContentController") as PageContentViewController
+		pageContentViewController.titleText = self.pageTitles[index]
+		pageContentViewController.imagePath = self.pageImagePaths[index]
+		pageContentViewController.pageIndex = index
+		
+		return pageContentViewController
+	}
 	
-//MARK: ViewDid/Should
+	
+//MARK: ViewDid/Should methods
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		self.pageViewController = self.storyboard.instantiateViewControllerWithIdentifier("PageViewController") as UIPageViewController
+		self.pageViewController.dataSource = self
+		
+		var startingViewController = self.viewControllerAtIndex(0) as PageContentViewController
+		var viewControllers = [startingViewController]
+		self.pageViewController.setViewControllers(viewControllers, direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
+		
+		//Size of the VC
+		self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 30)
+		
+		self.addChildViewController(pageViewController)
+		self.view.addSubview(pageViewController.view)
+		self.pageViewController.didMoveToParentViewController(self)
 		
 	}
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 	}
+	
 }
 

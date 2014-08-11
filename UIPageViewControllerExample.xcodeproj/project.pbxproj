@@ -13,6 +13,10 @@
 		38B5B1BB19993DD300CEDA5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38B5B1BA19993DD300CEDA5B /* Images.xcassets */; };
 		38B5B1C719993DD300CEDA5B /* UIPageViewControllerExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B5B1C619993DD300CEDA5B /* UIPageViewControllerExampleTests.swift */; };
 		38B5B1D7199940B500CEDA5B /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B5B1D6199940B500CEDA5B /* PageContentViewController.swift */; };
+		38D7580919995F82009509EE /* page1.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D7580519995F82009509EE /* page1.png */; };
+		38D7580A19995F82009509EE /* page2.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D7580619995F82009509EE /* page2.png */; };
+		38D7580B19995F82009509EE /* page3.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D7580719995F82009509EE /* page3.png */; };
+		38D7580C19995F82009509EE /* page4.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D7580819995F82009509EE /* page4.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,10 @@
 		38B5B1C519993DD300CEDA5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38B5B1C619993DD300CEDA5B /* UIPageViewControllerExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPageViewControllerExampleTests.swift; sourceTree = "<group>"; };
 		38B5B1D6199940B500CEDA5B /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
+		38D7580519995F82009509EE /* page1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page1.png; sourceTree = "<group>"; };
+		38D7580619995F82009509EE /* page2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page2.png; sourceTree = "<group>"; };
+		38D7580719995F82009509EE /* page3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page3.png; sourceTree = "<group>"; };
+		38D7580819995F82009509EE /* page4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page4.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +89,7 @@
 				38B5B1D019993E8A00CEDA5B /* Controller */,
 				38B5B1D119993E9000CEDA5B /* View */,
 				38B5B1BA19993DD300CEDA5B /* Images.xcassets */,
+				38D7580419995F25009509EE /* Sample Asset */,
 				38B5B1B119993DD300CEDA5B /* Supporting Files */,
 			);
 			path = UIPageViewControllerExample;
@@ -126,6 +135,17 @@
 				38B5B1B719993DD300CEDA5B /* Main.storyboard */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		38D7580419995F25009509EE /* Sample Asset */ = {
+			isa = PBXGroup;
+			children = (
+				38D7580519995F82009509EE /* page1.png */,
+				38D7580619995F82009509EE /* page2.png */,
+				38D7580719995F82009509EE /* page3.png */,
+				38D7580819995F82009509EE /* page4.png */,
+			);
+			name = "Sample Asset";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +230,10 @@
 			files = (
 				38B5B1B919993DD300CEDA5B /* Main.storyboard in Resources */,
 				38B5B1BB19993DD300CEDA5B /* Images.xcassets in Resources */,
+				38D7580B19995F82009509EE /* page3.png in Resources */,
+				38D7580919995F82009509EE /* page1.png in Resources */,
+				38D7580A19995F82009509EE /* page2.png in Resources */,
+				38D7580C19995F82009509EE /* page4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +441,7 @@
 				38B5B1CC19993DD300CEDA5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		38B5B1CD19993DD300CEDA5B /* Build configuration list for PBXNativeTarget "UIPageViewControllerExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -425,6 +450,7 @@
 				38B5B1CF19993DD300CEDA5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
