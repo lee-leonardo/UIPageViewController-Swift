@@ -17,6 +17,9 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
 	
 	//IBAction to start the tutorial UIPageVC.
 	@IBAction func startWalkthrough(sender: AnyObject) {
+		var startingController = self.viewControllerAtIndex(0)
+		var viewControllers = [startingController]
+		self.pageViewController.setViewControllers(viewControllers, direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
 		
 	}
 	
@@ -40,11 +43,16 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
 		var currentVC = viewController as PageContentViewController
 		var index = currentVC.pageIndex
 		
-		if index == 0 || index != nil {
+		if index == nil {
+		println("returning nil")
+			return nil
+		}
+		index = index! + 1
+		
+		if index == self.pageTitles.count {
 			return nil
 		}
 		
-		index = index! + 1
 		return viewControllerAtIndex(index!)
 	}
 	
@@ -79,7 +87,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
 		self.pageViewController.dataSource = self
 		
 		var startingViewController = self.viewControllerAtIndex(0) as PageContentViewController
-		var viewControllers = [startingViewController]
+		var viewControllers = [startingViewController] as NSArray
 		self.pageViewController.setViewControllers(viewControllers, direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
 		
 		//Size of the VC
