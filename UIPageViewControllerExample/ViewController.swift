@@ -20,6 +20,8 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
 		var startingController = self.viewControllerAtIndex(0)
 		var viewControllers = [startingController]
 		self.pageViewController.setViewControllers(viewControllers, direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
+        
+        println("hello this is brad")
 		
 	}
 	
