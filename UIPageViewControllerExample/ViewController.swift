@@ -21,50 +21,50 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
 		var viewControllers = [startingController]
 		self.pageViewController.setViewControllers(viewControllers, direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
         
+        //Easter Egg!
         println("hello this is brad")
 		
 	}
 	
 //MARK: UIPageViewControllerDataSource
-	func pageViewController(pageViewController: UIPageViewController!, viewControllerBeforeViewController viewController: UIViewController!) -> UIViewController! {
-		
-		var currentVC = viewController as PageContentViewController
-		var index = currentVC.pageIndex
-		
-		if index == 0 || index != nil {
-			return nil
-		}
-		
-		index = index! - 1
-		return viewControllerAtIndex(index!)
-		
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+        
+        var currentVC = viewController as? PageContentViewController
+        var index = currentVC!.pageIndex
+        
+        if index == 0 || index != nil {
+            return nil
+        }
+        
+        index = index! - 1
+        return viewControllerAtIndex(index!)
 	}
 	
-	func pageViewController(pageViewController: UIPageViewController!, viewControllerAfterViewController viewController: UIViewController!) -> UIViewController! {
-
-		var currentVC = viewController as PageContentViewController
-		var index = currentVC.pageIndex
-		
-		if index == nil {
-		println("returning nil")
-			return nil
-		}
-		index = index! + 1
-		
-		if index == self.pageTitles.count {
-			return nil
-		}
-		
-		return viewControllerAtIndex(index!)
+    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    
+        var currentVC = viewController as? PageContentViewController
+        var index = currentVC!.pageIndex
+        
+        if index == nil {
+            println("returning nil")
+            return nil
+        }
+        index = index! + 1
+        
+        if index == self.pageTitles.count {
+            return nil
+        }
+        
+        return viewControllerAtIndex(index!)
 	}
 	
-	func presentationCountForPageViewController(pageViewController: UIPageViewController!) -> Int {
+	func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
 		return self.pageTitles.count
 	}
 	
-	func presentationIndexForPageViewController(pageViewController: UIPageViewController!) -> Int {
-		return 0
-	}
+    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return 0
+    }
 	
 	//Used to generate the ViewControllers at the Index.
 	func viewControllerAtIndex( index: Int) -> PageContentViewController! {
@@ -72,7 +72,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
 			return nil
 		}
 		
-		var pageContentViewController = self.storyboard.instantiateViewControllerWithIdentifier("PageContentController") as PageContentViewController
+		var pageContentViewController = self.storyboard!.instantiateViewControllerWithIdentifier("PageContentController") as! PageContentViewController
 		pageContentViewController.titleText = self.pageTitles[index]
 		pageContentViewController.imagePath = self.pageImagePaths[index]
 		pageContentViewController.pageIndex = index
@@ -85,12 +85,12 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.pageViewController = self.storyboard.instantiateViewControllerWithIdentifier("PageViewController") as UIPageViewController
+		self.pageViewController = self.storyboard!.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
 		self.pageViewController.dataSource = self
 		
 		var startingViewController = self.viewControllerAtIndex(0) as PageContentViewController
 		var viewControllers = [startingViewController] as NSArray
-		self.pageViewController.setViewControllers(viewControllers, direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
+		self.pageViewController.setViewControllers(viewControllers as [AnyObject], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
 		
 		//Size of the VC
 		self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 30)

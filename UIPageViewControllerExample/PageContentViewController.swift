@@ -20,7 +20,7 @@ class PageContentViewController: UIViewController {
 	var imagePath : String?
 	
 	override func viewDidLoad() {
-		self.backgroundImageView.image = UIImage(named: self.imagePath)
+		self.backgroundImageView.image = UIImage(named: self.imagePath!)
 		self.titleLabel.text = self.titleText
 	}
 
